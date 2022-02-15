@@ -7,9 +7,9 @@ class DocumentBuilder
 
   def call
     Dir.mktmpdir do |dir|
-      File.open("directive", "w+") { |f| f.write @directive }
+      File.open(File.join(dir, "directive"), "w+") { |f| f.write @directive }
 
-      `documentbuilder #{File.join(dir, "directive")}  2>&1`
+      status = `documentbuilder #{File.join(dir, "directive")}  2>&1`
       debugger
     end
   end
