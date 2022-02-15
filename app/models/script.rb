@@ -6,6 +6,6 @@ class Script < ApplicationRecord
   after_create :build_doc
 
   def build_doc
-    doc.attach io: DocumentBuilder.new(text).call, filename: "testdoc"
+    doc.attach io: DocumentBuilder.new(text).call, filename: "presentation.pptx"
   end
 end
