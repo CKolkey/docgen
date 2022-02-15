@@ -1,4 +1,4 @@
-require "stringio"
+# frozen_string_literal: true
 
 class Script < ApplicationRecord
   has_one_attached :doc
@@ -6,8 +6,6 @@ class Script < ApplicationRecord
   after_commit :build_doc
 
   def build_doc
-    DocumentBuilder.new(text).call
-
-    doc.attach io: StringIO.new("Hello World"), filename: "testdoc"
+    doc.attach io: DocumentBuilder.new(text).call, filename: "testdoc"
   end
 end
