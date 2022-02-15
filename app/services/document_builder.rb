@@ -1,13 +1,6 @@
 # frozen_string_literal: true
 
 class DocumentBuilder
-  TEMPLATE = <<~TEMPLATE
-    builder.CreateFile("pptx");
-    #{yield}
-    builder.SaveFile("pptx", "ApiChart.pptx");
-    builder.CloseFile();
-  TEMPLATE
-
   def initialize(directive)
     @directive = directive
   end
