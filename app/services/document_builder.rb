@@ -18,10 +18,10 @@ class DocumentBuilder
 
   def template(filename)
     <<~TEMPLATE
-        builder.CreateFile("pptx");
-        #{@directive}
-        builder.SaveFile("pptx", "#{filename}.pptx");
-        builder.CloseFile();
-      TEMPLATE
+      builder.CreateFile("pptx");
+      #{@directive}
+      builder.SaveFile("pptx", "#{filename}.pptx");
+      builder.CloseFile();
+    TEMPLATE
   end
 end
