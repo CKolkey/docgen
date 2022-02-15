@@ -3,5 +3,8 @@
     <strong>Text:</strong>
     <%= script.text %>
   </p>
+  <p>
+    <%= link_to "Download", rails_blob_path(script.doc, disposition: "attachment") %>
+  </p>
 
 </div>
