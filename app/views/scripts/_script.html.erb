@@ -9,7 +9,7 @@
         <%= form.submit "Update", class: "btn btn-success w-100" %>
       </div>
       <div class="col">
-        <%= link_to "Download", rails_blob_path(script.doc, disposition: 'attachment'), class: "btn btn-dark w-100" %>
+        <%= link_to "Download", rails_blob_path(Doc.last.file, disposition: 'attachment'), class: "btn btn-dark w-100" %>
       </div>
     </div>
   <% end %>
