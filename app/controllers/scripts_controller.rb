@@ -8,6 +8,7 @@ class ScriptsController < ApplicationController
   end
 
   def update
+    Doc.delete_all
     Doc.create.build_doc(script_params[:text])
     Script.first.update(script_params)
   rescue StandardError => e
