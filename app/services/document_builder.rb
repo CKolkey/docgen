@@ -10,7 +10,7 @@ class DocumentBuilder
       File.open(File.join(dir, 'directive'), 'w+') { |f| f.write template(File.join(dir, 'presentation')) }
 
       status = `documentbuilder #{File.join(dir, 'directive')}  2>&1`
-      raise StandardError unless status.empty?
+      raise(StandardError, status) unless status.empty?
 
       File.new(File.join(dir, 'presentation.pptx'))
     end

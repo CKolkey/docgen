@@ -13,9 +13,8 @@ class ScriptsController < ApplicationController
 
     @doc.build_doc(script_params[:text])
     @script.update(script_params)
-
-  rescue StandardError
-    @failed = true
+  rescue StandardError => e
+    flash.alert = e
   ensure
     redirect_to scripts_path
   end
