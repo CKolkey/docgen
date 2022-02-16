@@ -8,11 +8,8 @@ class ScriptsController < ApplicationController
   end
 
   def update
-    @script = Script.first
-    @doc    = Doc.create
-
-    @doc.build_doc(script_params[:text])
-    @script.update(script_params)
+    Doc.create.build_doc(script_params[:text])
+    Script.first.update(script_params)
   rescue StandardError => e
     flash.alert = e
   ensure
