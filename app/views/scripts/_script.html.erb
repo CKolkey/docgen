@@ -8,6 +8,7 @@
       <div class="col">
         <%= form.submit "Update", class: "btn btn-success w-100" %>
       </div>
+
       <% if Doc.last %>
         <div class="col">
           <%= link_to "Download", rails_blob_path(Doc.last.file, disposition: 'attachment'), class: "btn btn-dark w-100" %>
