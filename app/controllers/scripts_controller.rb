@@ -10,8 +10,11 @@ class ScriptsController < ApplicationController
   def update
     @script = Script.first
 
-    @script.update(script_params)
-    @script.build_doc
+    ActiveRecord::Base.transaction do
+      @script.update(script_params)
+      @script.build_doc
+    end
+
     redirect_to scripts_path
   end
 
