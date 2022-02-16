@@ -11,8 +11,8 @@ class ScriptsController < ApplicationController
     @script = Script.first
     @doc    = Doc.create
 
-    @script.update(script_params)
     @doc.build_doc(script_params[:text])
+    @script.update(script_params)
 
     redirect_to scripts_path
   end
