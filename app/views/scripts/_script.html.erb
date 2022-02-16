@@ -1,10 +1,16 @@
-<div id="<%= dom_id script %>">
-  <p>
-    <strong>Text:</strong>
-    <%= script.text %>
-  </p>
-  <p>
-    <%= link_to "Download", rails_blob_path(script.doc, disposition: 'attachment') %>
-  </p>
+<div id="<%= dom_id script %>" style="height:88vh">
+  <%= form_with(model: script, class: "h-100") do |form| %>
+    <div class="h-100">
+      <%= form.text_area :text, class: "form-control h-100" %>
+    </div>
 
+    <div class="mt-3 row">
+      <div class="col">
+        <%= form.submit "Update", class: "btn btn-success w-100" %>
+      </div>
+      <div class="col">
+        <%= link_to "Download", rails_blob_path(script.doc, disposition: 'attachment'), class: "btn btn-dark w-100" %>
+      </div>
+    </div>
+  <% end %>
 </div>

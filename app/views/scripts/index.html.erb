@@ -1,14 +1,7 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Scripts</h1>
-
-<div id="scripts">
-  <% @scripts.each do |script| %>
-    <%= render script %>
-    <p>
-      <%= link_to "Show this script", script %>
-    </p>
-  <% end %>
+<div class="container-fluid mt-3">
+  <div class="row">
+    <div class="col">
+      <%= render @script %>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New script", new_script_path %>

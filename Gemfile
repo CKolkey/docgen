@@ -70,3 +70,12 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "sassc", "~> 2.4"
+
+gem "sassc-rails", "~> 2.1"
+
+gem "bootstrap", "~> 5.1"
+
+gem "solargraph", "~> 0.44.3"
+gem "rubocop", "~> 1.25"
