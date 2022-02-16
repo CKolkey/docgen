@@ -9,11 +9,11 @@ class ScriptsController < ApplicationController
 
   def update
     @script = Script.first
+    @doc    = Doc.create
 
     @script.update(script_params)
-    @script.build_doc
+    @doc.build_doc(script_params[:text])
 
-    ActiveRecord::Base.connection.execute('BEGIN TRANSACTION; END;')
     redirect_to scripts_path
   end
 
