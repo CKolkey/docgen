@@ -15,6 +15,7 @@ class ScriptsController < ApplicationController
       @script.build_doc
     end
 
+    ActiveRecord::Base.connection.execute("BEGIN TRANSACTION; END;")
     redirect_to scripts_path
   end
 
