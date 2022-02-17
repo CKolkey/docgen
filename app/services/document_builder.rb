@@ -10,12 +10,13 @@ class DocumentBuilder
       File.open(File.join(dir, 'directive'), 'w+') { |f| f.write template(File.join(dir, 'presentation')) }
 
       status = `documentbuilder #{File.join(dir, 'directive')}  2>&1`
-      raise(StandardError, status) unless status.empty?
+      raise(DocumentBuilderFailed, status) unless status.empty?
 
       File.new(File.join(dir, 'presentation.pptx'))
     end
   end
 
+  # Documentbuilder doesn't currently support file:// for images, only http(s):// or base64
   def encoded_platform_icons
     Dir[Rails.root.join("app", "assets", "images", "*.png")].map do |file|
       encoded = Base64.strict_encode64(File.read(file))

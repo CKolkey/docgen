@@ -1,0 +1,2 @@
+class DocumentBuilderFailed < StandardError
+end
