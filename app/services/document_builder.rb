@@ -7,8 +7,7 @@ class DocumentBuilder
 
   def call
     Dir.mktmpdir do |dir|
-      File.open(File.join(dir, 'directive'), 'w+') { |f| f.write template(dir, "presentation") }
-      copy_images(dir)
+      File.open(File.join(dir, 'directive'), 'w+') { |f| f.write template(File.join(dir, 'presentation')) }
 
       status = `documentbuilder #{File.join(dir, 'directive')}  2>&1`
       raise(StandardError, status) unless status.empty?
@@ -17,16 +16,21 @@ class DocumentBuilder
     end
   end
 
-  def copy_images(dest)
-    FileUtils.cp_r(Rails.root.join("app", "assets", "images"), dest)
+  def encoded_platform_icons
+    icons = Dir[Rails.root.join("app", "assets", "images", "*.png")]
+    icons.map do |file|
+      encoded = Base64.encode64(File.read(file))
+      var_name = File.basename(file, ".*").underscore.camelize
+      "#{var_name} = '#{encoded}';"
+    end.join
   end
 
-  def template(dir, filename)
+  def template(filename)
     <<~TEMPLATE
       builder.CreateFile("pptx");
-      tmpDir = "#{dir}/";
+      #{encoded_platform_icons}
       #{@directive}
-      builder.SaveFile("pptx", "#{File.join(dir, filename)}.pptx");
+      builder.SaveFile("pptx", "#{filename}.pptx");
       builder.CloseFile();
     TEMPLATE
   end
