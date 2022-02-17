@@ -20,7 +20,7 @@ class DocumentBuilder
     Dir[Rails.root.join("app", "assets", "images", "*.png")].map do |file|
       encoded = Base64.strict_encode64(File.read(file))
       var_name = File.basename(file, ".*").underscore.camelize
-      "#{var_name} = \"#{encoded}\";"
+      "#{var_name} = \"data:image/png;base64,#{encoded}\";"
     end.join("\n")
   end
 
