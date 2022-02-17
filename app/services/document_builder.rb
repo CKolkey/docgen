@@ -21,7 +21,7 @@ class DocumentBuilder
     icons.map do |file|
       encoded = Base64.encode64(File.read(file))
       var_name = File.basename(file, ".*").underscore.camelize
-      "var #{var_name} = '#{encoded}';"
+      "var #{var_name} = \"#{encoded}\";"
     end.join("\n")
   end
 
