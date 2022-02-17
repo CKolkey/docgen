@@ -9,10 +9,11 @@ class DocumentBuilder
     Dir.mktmpdir do |dir|
       File.open(File.join(dir, 'directive'), 'w+') { |f| f.write template(File.join(dir, 'presentation')) }
 
-      status = `documentbuilder #{File.join(dir, 'directive')}  2>&1`
-      raise(StandardError, status) unless status.empty?
+      # status = `documentbuilder #{File.join(dir, 'directive')}  2>&1`
+      # raise(StandardError, status) unless status.empty?
 
-      File.new(File.join(dir, 'presentation.pptx'))
+      # File.new(File.join(dir, 'presentation.pptx'))
+      nil
     end
   end
 
