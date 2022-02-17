@@ -18,7 +18,7 @@ class DocumentBuilder
 
   def encoded_platform_icons
     Dir[Rails.root.join("app", "assets", "images", "*.png")].map do |file|
-      encoded = Base64.encode64(File.read(file))
+      encoded = Base64.strict_encode64(File.read(file))
       var_name = File.basename(file, ".*").underscore.camelize
       "#{var_name} = \"#{encoded}\";"
     end.join("\n")
