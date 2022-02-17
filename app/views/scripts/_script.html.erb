@@ -1,5 +1,5 @@
 <div id="<%= dom_id script %>" class="d-flex" style="height:100vh;" data-controller="turbo-frame-persistent-scroll">
-  <%= form_with(model: script, class: "d-flex flex-column flex-fill m-3", data: { controller: "persistent-scroll", action: "persistent-scroll#savePosition" }) do |form| %>
+  <%= form_with(model: script, class: "d-flex flex-column flex-fill m-3", data: { action: "persistent-scroll#savePosition" }) do |form| %>
     <div class="flex-grow-1 mb-auto d-flex flex-column">
       <% if alert %>
         <div class="alert alert-danger" role="alert">
